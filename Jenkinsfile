@@ -8,9 +8,10 @@ pipeline{
             steps{
                 withDockerRegistry(
                     [credentialsId:"dockerlogin", url: ""]
-                ) 
-                script{
+                )  {
+                    script{
                     app = docker.build("tech365easybuggy")
+                    }
                 }
             }
         }
