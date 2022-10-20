@@ -10,7 +10,7 @@ pipeline{
                     [credentialsId:"dockerlogin", url: ""]
                 )  {
                     script{
-                    app = docker.build("tech365easybuggy")
+                    app = docker.build("asg")
                     }
                 }
             }
@@ -19,7 +19,7 @@ pipeline{
         stage('Push'){
             steps{
                 script{
-                    docker.withRegistry("https://601136829775.dkr.ecr.us-west-1.amazonaws.com", "ecr:us-west-1:aws-credentials")
+                    docker.withRegistry("https://601136829775.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws-credentials")
                     app.push("latest")
                     
                 }
