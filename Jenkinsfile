@@ -20,17 +20,17 @@ pipeline{
 				}
 			}
     }	
-//         stage('Build'){
-//             steps{
-//                 withDockerRegistry(
-//                     [credentialsId:"dockerlogin", url: ""]
-//                 )  {
-//                     script{
-//                     app = docker.build("asg")
-//                     }
-//                 }
-//             }
-//         }
+        stage('Build'){
+            steps{
+                withDockerRegistry(
+                    [credentialsId:"dockerlogin", url: ""]
+                )  {
+                    script{
+                    app = docker.build("asg")
+                    }
+                }
+            }
+        }
 
 //         stage('Push'){
 //             steps{
