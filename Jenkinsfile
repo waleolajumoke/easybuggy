@@ -6,7 +6,11 @@ pipeline{
     stages{
         stage('CompileandRunSonarAnalysis') {
             steps {	
-		sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=tech365sec -Dsonar.organization=tech365sec -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=eb22cd1de47e6e77638d25db05e4069700253707'
+		    withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
+    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=tech365sec -Dsonar.organization=tech365sec -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN'
+}
+
+		// sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=tech365sec -Dsonar.organization=tech365sec -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=eb22cd1de47e6e77638d25db05e4069700253707'
 			}
         } 
 	  //   stage('RunSCAAnalysisUsingSnyk') {
