@@ -32,17 +32,17 @@ pipeline{
             }
         }
 
-//         stage('Push'){
-//             steps{
-//                 script{
-//                     docker.withRegistry("https://601136829775.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws-credentials"){
-//                         app.push("latest")
-//                     }
+        stage('Push'){
+            steps{
+                script{
+                    docker.withRegistry("https://24338258393.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws-credentials"){
+                        app.push("latest")
+                    }
                     
                     
-//                 }
-//             }
-//         }
+                }
+            }
+        }
     }
 
     
