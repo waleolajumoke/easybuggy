@@ -3,7 +3,7 @@ pipeline{
     tools{
         maven "Maven_3_5_2"
     }
-//     stages{
+    stages{
 //         stage('CompileandRunSonarAnalysis') {
 //             steps {	
 // 		    withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
@@ -46,4 +46,4 @@ pipeline{
     }
 
     
-// }
+}
