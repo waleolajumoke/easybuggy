@@ -4,22 +4,22 @@ pipeline{
         maven "Maven_3_5_2"
     }
     stages{
-        stage('CompileandRunSonarAnalysis') {
-            steps {	
-		    withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
-    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=tech365sec1 -Dsonar.organization=tech365sec1 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN'
-}
+//         stage('CompileandRunSonarAnalysis') {
+//             steps {	
+// 		    withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
+//     sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=tech365sec1 -Dsonar.organization=tech365sec1 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN'
+// }
 
 		
-			}
+// 			}
         } 
-	  //   stage('RunSCAAnalysisUsingSnyk') {
-   //          steps {		
-			// 	withCredentials([string(credentialsId: 'SNYK_TOKEN', variable: 'SNYK_TOKEN')]) {
-			// 		sh 'mvn snyk:test -fn'
-			// 	}
-			// }
-   //  }	
+	    stage('RunSCAAnalysisUsingSnyk') {
+            steps {		
+				withCredentials([string(credentialsId: 'SNYK_TOKEN', variable: 'SNYK_TOKEN')]) {
+					sh 'mvn snyk:test -fn'
+				}
+			}
+    }	
         // stage('Build'){
         //     steps{
         //         withDockerRegistry(
