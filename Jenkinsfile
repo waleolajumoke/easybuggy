@@ -20,29 +20,29 @@ pipeline{
 				}
 			}
     }	
-        // stage('Build'){
-        //     steps{
-        //         withDockerRegistry(
-        //             [credentialsId:"dockerlogin", url: ""]
-        //         )  {
-        //             script{
-        //             app = docker.build("asg")
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Build'){
+            steps{
+                withDockerRegistry(
+                    [credentialsId:"dockerlogin", url: ""]
+                )  {
+                    script{
+                    app = docker.build("asg")
+                    }
+                }
+            }
+        }
 
-        // stage('Push'){
-        //     steps{
-        //         script{
-        //             docker.withRegistry("https://924338258393.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws-credentials"){
-        //                 app.push("latest")
-        //             }
+        stage('Push'){
+            steps{
+                script{
+                    docker.withRegistry("https://924338258393.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws-credentials"){
+                        app.push("latest")
+                    }
                     
                     
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
     }
 
     
